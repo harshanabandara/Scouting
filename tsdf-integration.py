@@ -12,8 +12,8 @@ from pathlib import Path
 import numpy as np
 import open3d as o3d
 
-from utils import DEPTH_SCALING_FACTOR
-
+# from utils import DEPTH_SCALING_FACTOR
+DEPTH_SCALING_FACTOR = 5000
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='TSDF-Integration with open3d')

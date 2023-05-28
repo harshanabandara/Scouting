@@ -25,6 +25,7 @@ def process_timestamps(path):
 def load_pv_data(csv_path):
     with open(csv_path) as f:
         lines = f.readlines()
+        # get all the lines in a list of strings
 
     # The first line contains info about the intrinsics.
     # The following lines (one per frame) contain timestamp, focal length and transform PVtoWorld
@@ -36,7 +37,8 @@ def load_pv_data(csv_path):
     intrinsics_ox, intrinsics_oy, \
         intrinsics_width, intrinsics_height = ast.literal_eval(lines[0])
 
-    for i_frame, frame in enumerate(lines[1:]):
+    for i_frame, frame in enumerate(lines[2:]):
+        print(frame)
         # Row format is
         # timestamp, focal length (2), transform PVtoWorld (4x4)
         frame = frame.split(',')
@@ -65,9 +67,10 @@ def get_eye_gaze_point(gaze_data):
 
 
 def project_hand_eye_to_pv(folder):
-    print("")
+    print(folder)
     head_hat_stream_path = list(folder.glob('*_eye.csv'))[0]
     pv_info_path = list(folder.glob('*pv.txt'))[0]
+    print(f'pv info path : {pv_info_path}')
     pv_paths = sorted(list((folder / 'PV').glob('*png')))
     assert(len(pv_paths))
 

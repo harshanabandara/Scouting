@@ -163,9 +163,11 @@ def save_single_pcloud(shared_dict,
                                 {intrinsic_list[3]} \n")
 
                     # Create rgb and depth paths
-                    rgb_parts = Path(rgb_proj_path).parts[2:]
+                    # rgb_parts = Path(rgb_proj_path).parts[2:]
+                    rgb_parts = Path(rgb_proj_path).parts[:]
                     rgb_tmp = Path(rgb_parts[-2]) / Path(rgb_parts[-1])
-                    depth_parts = Path(depth_proj_path).parts[2:]
+                    # depth_parts = Path(depth_proj_path).parts[2:]
+                    depth_parts = Path(depth_proj_path).parts[:]
                     depth_tmp = Path(depth_parts[-2]) / Path(depth_parts[-1])
 
                     # Compute camera center
