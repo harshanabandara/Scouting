@@ -52,6 +52,9 @@ def load_pv_data(csv_path):
 
 
 def match_timestamp(target, all_timestamps):
+    '''
+    Return the index of the closest timestamp to the target from a set of timestamps
+    '''
     return np.argmin([abs(x - target) for x in all_timestamps])
 
 
