@@ -59,8 +59,13 @@ def match_timestamp(target, all_timestamps):
 
 
 def get_eye_gaze_point(gaze_data):
+    '''
+    Returns the x,y,z coordinates of the gaze point.
+    '''
     origin_homog = gaze_data[:4]
+    # first 4 values are the origin
     direction_homog = gaze_data[4:8]
+    # next 4 values are the direction
     direction_homog = direction_homog / np.linalg.norm(direction_homog)
     # if no distance was recorded, set 1m by default
     dist = gaze_data[8] if gaze_data[8] > 0.0 else 1.0
